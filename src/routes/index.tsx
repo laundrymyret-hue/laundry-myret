@@ -1,29 +1,79 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/myret/Navbar";
+import { Hero } from "@/components/myret/Hero";
+import { TrustBar } from "@/components/myret/TrustBar";
+import { Services } from "@/components/myret/Services";
+import { HowItWorks } from "@/components/myret/HowItWorks";
+import { LiveTracking } from "@/components/myret/LiveTracking";
+import { AppShowcase } from "@/components/myret/AppShowcase";
+import { WhyMyret } from "@/components/myret/WhyMyret";
+import { Subscriptions } from "@/components/myret/Subscriptions";
+import { Testimonials } from "@/components/myret/Testimonials";
+import { BeforeAfter } from "@/components/myret/BeforeAfter";
+import { Business } from "@/components/myret/Business";
+import { Rewards } from "@/components/myret/Rewards";
+import { FaqSection } from "@/components/myret/FaqSection";
+import { FinalCta } from "@/components/myret/FinalCta";
+import { SiteFooter } from "@/components/myret/SiteFooter";
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "MyRet Laundry",
+  description:
+    "Premium dry cleaning, wash & fold, garment care and pickup & delivery service.",
+  slogan: "Luxury Garment Care. Delivered.",
+  priceRange: "$$",
+  areaServed: "City-wide",
+  makesOffer: [
+    "Dry Cleaning",
+    "Wash & Fold",
+    "Ironing & Pressing",
+    "Pickup & Delivery",
+    "Express Service",
+  ],
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "MyRet Laundry — Luxury Garment Care. Delivered." },
+      {
+        name: "description",
+        content:
+          "Premium dry cleaning, wash & fold, expert garment care, and seamless pickup & delivery across the city. Schedule your first pickup with MyRet Laundry.",
+      },
+      { property: "og:title", content: "MyRet Laundry — Luxury Garment Care. Delivered." },
+      {
+        property: "og:description",
+        content:
+          "Premium cleaning, expert garment care, and seamless pickup & delivery. Laundry reimagined.",
+      },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(ldJson) }],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="overflow-x-hidden bg-background">
+      <Navbar />
+      <Hero />
+      <TrustBar />
+      <Services />
+      <HowItWorks />
+      <LiveTracking />
+      <AppShowcase />
+      <WhyMyret />
+      <Subscriptions />
+      <Testimonials />
+      <BeforeAfter />
+      <Business />
+      <Rewards />
+      <FaqSection />
+      <FinalCta />
+      <SiteFooter />
+    </main>
   );
 }
