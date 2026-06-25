@@ -77,19 +77,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "MyRet Laundry — Luxury Garment Care. Delivered." },
+      {
+        name: "description",
+        content:
+          "MyRet Laundry offers premium dry cleaning, wash & fold, expert garment care, and seamless pickup & delivery across the city. Luxury garment care, delivered.",
+      },
+      { name: "author", content: "MyRet Laundry" },
+      { property: "og:title", content: "MyRet Laundry — Luxury Garment Care. Delivered." },
+      {
+        property: "og:description",
+        content:
+          "Premium cleaning, expert garment care, and seamless pickup & delivery. Laundry reimagined for the modern world.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@MyRetLaundry" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap",
       },
     ],
   }),
