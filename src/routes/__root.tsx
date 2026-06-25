@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@MyRetLaundry" },
+      { name: "twitter:title", content: "MyRet Laundry — Luxury Garment Care. Delivered." },
+      { name: "description", content: "MyRet Laundry offers premium garment care, dry cleaning, and pickup/delivery services." },
+      { property: "og:description", content: "MyRet Laundry offers premium garment care, dry cleaning, and pickup/delivery services." },
+      { name: "twitter:description", content: "MyRet Laundry offers premium garment care, dry cleaning, and pickup/delivery services." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/nj4hSepFStXmtwm6vCF7Lri5zzI3/social-images/social-1782410773277-logo.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/nj4hSepFStXmtwm6vCF7Lri5zzI3/social-images/social-1782410773277-logo.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
