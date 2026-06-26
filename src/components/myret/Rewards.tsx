@@ -61,7 +61,7 @@ export function Rewards() {
                 </div>
                 <h3 className="mt-5 font-display text-xl font-bold">{l.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {l.name === "Silver" && "Welcome tier — 1 point / ₦100 spent."}
+                  {l.name === "Silver" && "Welcome tier — 1 point / KES 100 spent."}
                   {l.name === "Gold" && "Free express upgrades & priority pickup."}
                   {l.name === "Platinum" && "Concierge care & exclusive member rates."}
                 </p>

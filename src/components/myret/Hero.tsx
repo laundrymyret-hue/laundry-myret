@@ -146,7 +146,7 @@ export function Hero() {
               <div className="rounded-2xl bg-white/10 p-3">
                 <CreditCard size={18} className="text-[color:var(--brand-red)]" />
                 <p className="mt-2 text-xs text-white/60">Payment</p>
-                <p className="text-sm font-semibold text-white">Paid · ₦8,500</p>
+                <p className="text-sm font-semibold text-white">Paid · KES 1,850</p>
               </div>
             </div>
           </div>

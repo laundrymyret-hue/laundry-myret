@@ -2,12 +2,10 @@ import { Star } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const reviews = [
-  { name: "Adaeze O.", role: "Lagos", text: "My designer dresses came back flawless. The tracking made it feel like ordering luxury, not laundry." },
-  { name: "Tunde B.", role: "Architect", text: "Pickup, clean, delivered — never left my apartment. This is how laundry should work." },
-  { name: "Chiamaka N.", role: "Doctor", text: "Express service saved me before a conference. Spotless and same-day. Unreal." },
-  { name: "Kelechi M.", role: "Airbnb Host", text: "Hotel-grade linens every single time. My ratings went up because of MyRet." },
-  { name: "Zainab A.", role: "Entrepreneur", text: "The subscription is the best money I spend monthly. Premium care, zero stress." },
-  { name: "David E.", role: "Lawyer", text: "Crisp shirts, perfect creases, on time. Genuinely a premium experience." },
+  { name: "Wanjiru K.", role: "Nairobi", text: "My designer dresses came back flawless. The tracking made it feel like ordering luxury, not laundry." },
+  { name: "Otieno O.", role: "Architect, Kisumu", text: "Pickup, clean, delivered — never left my apartment. This is how laundry should work." },
+  { name: "Amina H.", role: "Doctor, Mombasa", text: "Express service saved me before a conference. Spotless and same-day. Unreal." },
+  { name: "Kibet C.", role: "Airbnb Host, Nakuru", text: "Hotel-grade linens every single time. My ratings went up because of MyRet." },
 ];
 
 function Card({ r }: { r: (typeof reviews)[number] }) {

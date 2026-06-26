@@ -6,7 +6,7 @@ import { MagneticButton } from "./MagneticButton";
 const plans = [
   {
     name: "Essential",
-    price: "₦15,000",
+    price: "KES 3,500",
     period: "/mo",
     blurb: "Basic household needs.",
     features: ["Up to 20 garments", "Wash & fold", "48hr turnaround", "Free pickup & delivery"],
@@ -14,7 +14,7 @@ const plans = [
   },
   {
     name: "Premium",
-    price: "₦35,000",
+    price: "KES 8,500",
     period: "/mo",
     blurb: "Families and professionals.",
     features: [
@@ -28,7 +28,7 @@ const plans = [
   },
   {
     name: "Elite",
-    price: "₦75,000",
+    price: "KES 18,000",
     period: "/mo",
     blurb: "Luxury concierge service.",
     features: [
