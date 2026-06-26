@@ -3,6 +3,7 @@ import { Navbar } from "@/components/myret/Navbar";
 import { Hero } from "@/components/myret/Hero";
 import { TrustBar } from "@/components/myret/TrustBar";
 import { Services } from "@/components/myret/Services";
+import { ServiceCatalog } from "@/components/myret/ServiceCatalog";
 import { HowItWorks } from "@/components/myret/HowItWorks";
 import { LiveTracking } from "@/components/myret/LiveTracking";
 import { AppShowcase } from "@/components/myret/AppShowcase";
