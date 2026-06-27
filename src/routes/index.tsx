@@ -3,7 +3,8 @@ import { Navbar } from "@/components/myret/Navbar";
 import { Hero } from "@/components/myret/Hero";
 import { TrustBar } from "@/components/myret/TrustBar";
 import { Services } from "@/components/myret/Services";
-import { ServiceCatalog } from "@/components/myret/ServiceCatalog";
+import { ServiceCategories } from "@/components/myret/ServiceCategories";
+import { categoriesQuery } from "@/lib/catalog.queries";
 import { HowItWorks } from "@/components/myret/HowItWorks";
 import { LiveTracking } from "@/components/myret/LiveTracking";
 import { AppShowcase } from "@/components/myret/AppShowcase";
@@ -36,6 +37,7 @@ const ldJson = {
 };
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(categoriesQuery),
   head: () => ({
     meta: [
       { title: "MyRet Laundry — Luxury Garment Care. Delivered." },
@@ -63,7 +65,7 @@ function Index() {
       <Hero />
       <TrustBar />
       <Services />
-      <ServiceCatalog />
+      <ServiceCategories />
       <HowItWorks />
       <LiveTracking />
       <AppShowcase />
