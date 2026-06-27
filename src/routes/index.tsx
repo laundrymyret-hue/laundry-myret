@@ -37,6 +37,7 @@ const ldJson = {
 };
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(categoriesQuery),
   head: () => ({
     meta: [
       { title: "MyRet Laundry — Luxury Garment Care. Delivered." },
