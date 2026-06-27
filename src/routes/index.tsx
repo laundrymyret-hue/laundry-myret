@@ -65,7 +65,7 @@ function Index() {
       <Hero />
       <TrustBar />
       <Services />
-      <ServiceCatalog />
+      <ServiceCategories />
       <HowItWorks />
       <LiveTracking />
       <AppShowcase />
