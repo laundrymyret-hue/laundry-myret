@@ -5,11 +5,12 @@ import { Logo } from "./Logo";
 import { MagneticButton } from "./MagneticButton";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Business", href: "#business" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Services", href: "/#services-catalog" },
+  { label: "How It Works", href: "/#how" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Business", href: "/#business" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Admin", href: "/admin" },
 ];
 
 export function Navbar() {
