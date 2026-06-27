@@ -38,7 +38,7 @@ export function Navbar() {
             : "border border-transparent bg-white/0"
         }`}
       >
-        <a href="#top" aria-label="MyRet Laundry home">
+        <a href="/#top" aria-label="MyRet Laundry home">
           <Logo />
         </a>
 
@@ -55,7 +55,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <MagneticButton href="#cta" size="md">
+          <MagneticButton href="/#cta" size="md">
             Schedule Pickup
           </MagneticButton>
         </div>
@@ -88,7 +88,7 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <MagneticButton href="#cta" className="mt-2 w-full">
+              <MagneticButton href="/#cta" className="mt-2 w-full">
                 Schedule Pickup
               </MagneticButton>
             </div>
