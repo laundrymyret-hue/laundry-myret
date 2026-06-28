@@ -1,11 +1,12 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
-import { ArrowLeft, Clock, Search } from "lucide-react";
+import { ArrowLeft, Clock, Search, Plus, Check } from "lucide-react";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { Navbar } from "@/components/myret/Navbar";
 import { SiteFooter } from "@/components/myret/SiteFooter";
-import { MagneticButton } from "@/components/myret/MagneticButton";
+import { useCart } from "@/lib/cart";
 import { categoryQuery } from "@/lib/catalog.queries";
 import {
   formatPrice,
@@ -65,6 +66,41 @@ function PriceTag({ service }: { service: CatalogService }) {
     </div>
   );
 }
+
+function AddToOrderButton({ service }: { service: CatalogService }) {
+  const { add, items } = useCart();
+  const inCart = items.find((i) => i.serviceId === service.id);
+  const price = getEffectivePrice(service);
+
+  function handleAdd() {
+    if (price === null) {
+      toast.error("Pricing for this service is coming soon.");
+      return;
+    }
+    add({ serviceId: service.id, name: service.display_name, unitPrice: price });
+    toast.success(`${service.display_name} added to your order`);
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleAdd}
+      className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-white shadow-glow-red transition hover:brightness-110"
+    >
+      {inCart ? (
+        <>
+          <Check size={15} /> Added ({inCart.qty}) — add more
+        </>
+      ) : (
+        <>
+          <Plus size={15} /> Add to order
+        </>
+      )}
+    </button>
+  );
+}
+
+
 
 function CategoryPage() {
   const { category } = Route.useParams();
@@ -148,13 +184,8 @@ function CategoryPage() {
                   </span>
                 </div>
 
-                <MagneticButton
-                  href="/#cta"
-                  variant="primary"
-                  className="mt-4 w-full justify-center text-sm"
-                >
-                  Book
-                </MagneticButton>
+                <AddToOrderButton service={s} />
+
               </motion.div>
             ))}
           </div>

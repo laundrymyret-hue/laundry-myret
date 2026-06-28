@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { MagneticButton } from "./MagneticButton";
+import { useCart } from "@/lib/cart";
 
 const links = [
   { label: "Services", href: "/#services-catalog" },
@@ -16,6 +18,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { totalQty } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -54,19 +57,34 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <MagneticButton href="/#cta" size="md">
-            Schedule Pickup
-          </MagneticButton>
-        </div>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/checkout"
+            aria-label="View your order"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-[color:var(--brand-midnight)] transition-colors hover:bg-[color:var(--brand-ice)]"
+          >
+            <ShoppingBag size={20} />
+            {totalQty > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-gradient-brand px-1 text-[10px] font-bold text-white">
+                {totalQty}
+              </span>
+            )}
+          </Link>
 
-        <button
-          className="flex h-10 w-10 items-center justify-center rounded-full text-[color:var(--brand-midnight)] md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <div className="hidden md:block">
+            <MagneticButton href="/checkout" size="md">
+              Schedule Pickup
+            </MagneticButton>
+          </div>
+
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-full text-[color:var(--brand-midnight)] md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -88,7 +106,7 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <MagneticButton href="/#cta" className="mt-2 w-full">
+              <MagneticButton href="/checkout" className="mt-2 w-full">
                 Schedule Pickup
               </MagneticButton>
             </div>
