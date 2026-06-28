@@ -149,13 +149,8 @@ function CategoryPage() {
                   </span>
                 </div>
 
-                <MagneticButton
-                  href="/#cta"
-                  variant="primary"
-                  className="mt-4 w-full justify-center text-sm"
-                >
-                  Book
-                </MagneticButton>
+                <AddToOrderButton service={s} />
+
               </motion.div>
             ))}
           </div>
