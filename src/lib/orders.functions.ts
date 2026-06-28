@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeader } from "@tanstack/react-start/server";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
@@ -215,4 +216,48 @@ export const createOrder = createServerFn({ method: "POST" })
       items: orderItems,
       addons: orderAddons.map((a) => ({ name: a.name, qty: a.qty, line_total: a.line_total })),
     };
+  });
+
+export interface MyOrder {
+  id: string;
+  order_number: string;
+  status: string;
+  fulfillment_type: string;
+  total: number;
+  currency: string;
+  created_at: string;
+  items: { service_name: string; quantity: number; line_total: number }[];
+  addons: { addon_name: string; line_total: number }[];
+}
+
+/** Authenticated: the signed-in user's own orders with line items. */
+export const getMyOrders = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<MyOrder[]> => {
+    const { data: orders } = await context.supabase
+      .from("orders")
+      .select(
+        "id, order_number, status, fulfillment_type, total, currency, created_at, order_items(service_name, quantity, line_total), order_addons(addon_name, line_total)",
+      )
+      .eq("user_id", context.userId)
+      .order("created_at", { ascending: false });
+
+    return ((orders ?? []) as any[]).map((o) => ({
+      id: o.id,
+      order_number: o.order_number,
+      status: o.status,
+      fulfillment_type: o.fulfillment_type,
+      total: Number(o.total),
+      currency: o.currency,
+      created_at: o.created_at,
+      items: (o.order_items ?? []).map((i: any) => ({
+        service_name: i.service_name,
+        quantity: i.quantity,
+        line_total: Number(i.line_total),
+      })),
+      addons: (o.order_addons ?? []).map((a: any) => ({
+        addon_name: a.addon_name,
+        line_total: Number(a.line_total),
+      })),
+    }));
   });
