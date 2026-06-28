@@ -1,11 +1,12 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
-import { ArrowLeft, Clock, Search } from "lucide-react";
+import { ArrowLeft, Clock, Search, Plus, Check } from "lucide-react";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { Navbar } from "@/components/myret/Navbar";
 import { SiteFooter } from "@/components/myret/SiteFooter";
-import { MagneticButton } from "@/components/myret/MagneticButton";
+import { useCart } from "@/lib/cart";
 import { categoryQuery } from "@/lib/catalog.queries";
 import {
   formatPrice,
