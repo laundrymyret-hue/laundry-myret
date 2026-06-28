@@ -67,6 +67,41 @@ function PriceTag({ service }: { service: CatalogService }) {
   );
 }
 
+function AddToOrderButton({ service }: { service: CatalogService }) {
+  const { add, items } = useCart();
+  const inCart = items.find((i) => i.serviceId === service.id);
+  const price = getEffectivePrice(service);
+
+  function handleAdd() {
+    if (price === null) {
+      toast.error("Pricing for this service is coming soon.");
+      return;
+    }
+    add({ serviceId: service.id, name: service.display_name, unitPrice: price });
+    toast.success(`${service.display_name} added to your order`);
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleAdd}
+      className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-white shadow-glow-red transition hover:brightness-110"
+    >
+      {inCart ? (
+        <>
+          <Check size={15} /> Added ({inCart.qty}) — add more
+        </>
+      ) : (
+        <>
+          <Plus size={15} /> Add to order
+        </>
+      )}
+    </button>
+  );
+}
+
+
+
 function CategoryPage() {
   const { category } = Route.useParams();
   const { data } = useSuspenseQuery(categoryQuery(category));
