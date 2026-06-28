@@ -14,6 +14,196 @@ export type Database = {
   }
   public: {
     Tables: {
+      order_addons: {
+        Row: {
+          addon_id: string | null
+          addon_name: string
+          created_at: string
+          id: string
+          line_total: number
+          order_id: string
+          price: number
+          quantity: number
+        }
+        Insert: {
+          addon_id?: string | null
+          addon_name: string
+          created_at?: string
+          id?: string
+          line_total?: number
+          order_id: string
+          price?: number
+          quantity?: number
+        }
+        Update: {
+          addon_id?: string | null
+          addon_name?: string
+          created_at?: string
+          id?: string
+          line_total?: number
+          order_id?: string
+          price?: number
+          quantity?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_addons_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      order_items: {
+        Row: {
+          created_at: string
+          id: string
+          line_total: number
+          order_id: string
+          quantity: number
+          service_id: string | null
+          service_name: string
+          unit_price: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          line_total?: number
+          order_id: string
+          quantity?: number
+          service_id?: string | null
+          service_name: string
+          unit_price?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          line_total?: number
+          order_id?: string
+          quantity?: number
+          service_id?: string | null
+          service_name?: string
+          unit_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          addons_total: number
+          address: string | null
+          created_at: string
+          currency: string
+          customer_email: string | null
+          customer_name: string
+          customer_phone: string
+          fulfillment_type: string
+          id: string
+          notes: string | null
+          order_number: string
+          payment_method: string
+          scheduled_at: string | null
+          status: string
+          subtotal: number
+          total: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          addons_total?: number
+          address?: string | null
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          customer_name: string
+          customer_phone: string
+          fulfillment_type?: string
+          id?: string
+          notes?: string | null
+          order_number?: string
+          payment_method?: string
+          scheduled_at?: string | null
+          status?: string
+          subtotal?: number
+          total?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          addons_total?: number
+          address?: string | null
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          customer_name?: string
+          customer_phone?: string
+          fulfillment_type?: string
+          id?: string
+          notes?: string | null
+          order_number?: string
+          payment_method?: string
+          scheduled_at?: string | null
+          status?: string
+          subtotal?: number
+          total?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      service_addons: {
+        Row: {
+          active: boolean
+          created_at: string
+          currency: string
+          description: string | null
+          display_order: number
+          icon: string | null
+          id: string
+          name: string
+          price: number
+          pricing_type: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          currency?: string
+          description?: string | null
+          display_order?: number
+          icon?: string | null
+          id?: string
+          name: string
+          price?: number
+          pricing_type?: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          currency?: string
+          description?: string | null
+          display_order?: number
+          icon?: string | null
+          id?: string
+          name?: string
+          price?: number
+          pricing_type?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       service_categories: {
         Row: {
           active: boolean
