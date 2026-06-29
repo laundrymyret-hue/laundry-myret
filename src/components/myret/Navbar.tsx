@@ -12,7 +12,6 @@ const links = [
   { label: "Pricing", href: "/#pricing" },
   { label: "Business", href: "/#business" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Admin", href: "/admin" },
 ];
 
 export function Navbar() {
