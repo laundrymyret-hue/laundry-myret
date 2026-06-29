@@ -100,7 +100,7 @@ function AddToOrderButton({ service }: { service: CatalogService }) {
         </>
       ) : (
         <>
-          <Plus size={15} /> Add to order
+          <Plus size={15} /> Add to cart
         </>
       )}
     </button>
