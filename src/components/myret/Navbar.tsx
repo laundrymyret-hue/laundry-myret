@@ -58,8 +58,8 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link
-            to="/checkout"
-            aria-label="View your order"
+            to="/cart"
+            aria-label="View your cart"
             className="relative flex h-10 w-10 items-center justify-center rounded-full text-[color:var(--brand-midnight)] transition-colors hover:bg-[color:var(--brand-ice)]"
           >
             <ShoppingBag size={20} />
