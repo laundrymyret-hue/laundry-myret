@@ -71,7 +71,7 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:block">
-            <MagneticButton href="/checkout" size="md">
+            <MagneticButton href="/cart" size="md">
               Schedule Pickup
             </MagneticButton>
           </div>
@@ -105,7 +105,7 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <MagneticButton href="/checkout" className="mt-2 w-full">
+              <MagneticButton href="/cart" className="mt-2 w-full">
                 Schedule Pickup
               </MagneticButton>
             </div>
