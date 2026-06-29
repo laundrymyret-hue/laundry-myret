@@ -12,7 +12,6 @@ const links = [
   { label: "Pricing", href: "/#pricing" },
   { label: "Business", href: "/#business" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Admin", href: "/admin" },
 ];
 
 export function Navbar() {
@@ -59,8 +58,8 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link
-            to="/checkout"
-            aria-label="View your order"
+            to="/cart"
+            aria-label="View your cart"
             className="relative flex h-10 w-10 items-center justify-center rounded-full text-[color:var(--brand-midnight)] transition-colors hover:bg-[color:var(--brand-ice)]"
           >
             <ShoppingBag size={20} />
@@ -72,7 +71,7 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:block">
-            <MagneticButton href="/checkout" size="md">
+            <MagneticButton href="/cart" size="md">
               Schedule Pickup
             </MagneticButton>
           </div>
@@ -106,7 +105,7 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <MagneticButton href="/checkout" className="mt-2 w-full">
+              <MagneticButton href="/cart" className="mt-2 w-full">
                 Schedule Pickup
               </MagneticButton>
             </div>

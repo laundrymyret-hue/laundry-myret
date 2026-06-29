@@ -77,8 +77,15 @@ function AddToOrderButton({ service }: { service: CatalogService }) {
       toast.error("Pricing for this service is coming soon.");
       return;
     }
-    add({ serviceId: service.id, name: service.display_name, unitPrice: price });
-    toast.success(`${service.display_name} added to your order`);
+    add({
+      serviceId: service.id,
+      name: service.display_name,
+      unitPrice: price,
+      description: service.description,
+      unit: unitLabel(service),
+      estimated: estimatedLabel(service),
+    });
+    toast.success(`${service.display_name} added to your cart`);
   }
 
   return (
@@ -93,7 +100,7 @@ function AddToOrderButton({ service }: { service: CatalogService }) {
         </>
       ) : (
         <>
-          <Plus size={15} /> Add to order
+          <Plus size={15} /> Add to cart
         </>
       )}
     </button>
